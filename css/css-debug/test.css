@@ -1,0 +1,97 @@
+.ip4 .device-main {
+  width: 320px;
+  height: 480px;
+  display: inline-block; }
+.ip4 .wx .body {
+  width: 320px;
+  height: 416px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip4 .safari header {
+  background-image: url(../../images/addressbar.png);
+  width: 320px;
+  height: 64px;
+  background-size: 320px; }
+.ip4 .safari .body {
+  width: 320px;
+  height: 372px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip4 .safari footer {
+  background-image: url(../../images/toolbar.png);
+  width: 320px;
+  height: 44px;
+  background-size: 320px; }
+.ip4 .wx header {
+  background-image: url(../../images/wx.png);
+  width: 320px;
+  height: 64px;
+  background-size: 320px; }
+
+.ip5 .device-main {
+  width: 320px;
+  height: 568px;
+  display: inline-block; }
+.ip5 .wx .body {
+  width: 320px;
+  height: 504px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip5 .safari header {
+  background-image: url(../../images/addressbar.png);
+  width: 320px;
+  height: 64px;
+  background-size: 320px; }
+.ip5 .safari .body {
+  width: 320px;
+  height: 460px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip5 .safari footer {
+  background-image: url(../../images/toolbar.png);
+  width: 320px;
+  height: 44px;
+  background-size: 320px; }
+.ip5 .wx header {
+  background-image: url(../../images/wx.png);
+  width: 320px;
+  height: 64px;
+  background-size: 320px; }
+
+.ip6 .device-main {
+  width: 375px;
+  height: 667px;
+  display: inline-block; }
+.ip6 .wx .body {
+  width: 375px;
+  height: 603px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip6 .safari header {
+  background-image: url(../../images/topbar.png);
+  width: 375px;
+  height: 64px;
+  background-size: 375px; }
+.ip6 .safari .body {
+  width: 375px;
+  height: 559px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover; }
+.ip6 .safari footer {
+  background-image: url(../../images/bottombar.png);
+  width: 375px;
+  height: 44px;
+  background-size: 375px; }
+.ip6 .wx header {
+  background-image: url(../../images/wx.png);
+  width: 375px;
+  height: 64px;
+  background-size: 375px; }
+
+/*# sourceMappingURL=test.css.map */

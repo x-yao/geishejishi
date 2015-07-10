@@ -1,0 +1,135 @@
+.ip4{
+  .device-main{
+    width: 320px;
+    height: 480px;
+    display: inline-block;
+  }
+  .wx{
+    .body{
+      width: 320px;
+      height: 416px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+  }
+  .safari{
+    header{
+      background-image: url(../../images/addressbar.png);
+      width: 320px;
+      height: 64px;
+      background-size:320px;
+    }
+    .body{
+      width: 320px;
+      height: 372px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+    footer{
+      background-image: url(../../images/toolbar.png);
+      width: 320px;
+      height: 44px;
+      background-size:320px;
+    }
+  }
+  .wx{
+    header{
+      background-image: url(../../images/wx.png);
+      width: 320px;
+      height: 64px;
+      background-size:320px;
+    }
+  }
+}
+.ip5{
+  .device-main{
+    width: 320px;
+    height: 568px;
+    display: inline-block;
+  }
+  .wx{
+    .body{
+      width: 320px;
+      height: 504px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+  }
+  .safari{
+    header{
+      background-image: url(../../images/addressbar.png);
+      width: 320px;
+      height: 64px;
+      background-size:320px;
+    }
+    .body{
+      width: 320px;
+      height: 460px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+    footer{
+      background-image: url(../../images/toolbar.png);
+      width: 320px;
+      height: 44px;
+      background-size:320px;
+    }
+  }
+  .wx{
+    header{
+      background-image: url(../../images/wx.png);
+      width: 320px;
+      height: 64px;
+      background-size:320px;
+    }
+  }
+}
+.ip6{
+  .device-main{
+    width: 375px;
+    height: 667px;
+    display: inline-block;
+  }
+  .wx{
+    .body{
+      width: 375px;
+      height: 603px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+  }
+  .safari{
+    header{
+      background-image: url(../../images/topbar.png);
+      width: 375px;
+      height: 64px;
+      background-size:375px;
+    }
+    .body{
+      width: 375px;
+      height: 559px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
+    footer{
+      background-image: url(../../images/bottombar.png);
+      width: 375px;
+      height: 44px;
+      background-size:375px;
+    }
+  }
+  .wx{
+    header{
+      background-image: url(../../images/wx.png);
+      width: 375px;
+      height: 64px;
+      background-size:375px;
+    }
+  }
+}
