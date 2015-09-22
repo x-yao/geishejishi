@@ -5,12 +5,9 @@
     display: inline-block;
   }
   .wx{
-    .body{
+    .contain{
       width: 320px;
       height: 416px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
   }
   .safari{
@@ -20,12 +17,9 @@
       height: 64px;
       background-size:320px;
     }
-    .body{
+    .contain{
       width: 320px;
       height: 372px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
     footer{
       background-image: url(../../images/toolbar.png);
@@ -50,12 +44,9 @@
     display: inline-block;
   }
   .wx{
-    .body{
+    .contain{
       width: 320px;
       height: 504px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
   }
   .safari{
@@ -65,12 +56,9 @@
       height: 64px;
       background-size:320px;
     }
-    .body{
+    .contain{
       width: 320px;
       height: 460px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
     footer{
       background-image: url(../../images/toolbar.png);
@@ -95,12 +83,9 @@
     display: inline-block;
   }
   .wx{
-    .body{
+    .contain{
       width: 375px;
       height: 603px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
   }
   .safari{
@@ -110,12 +95,9 @@
       height: 64px;
       background-size:375px;
     }
-    .body{
+    .contain{
       width: 375px;
       height: 559px;
-      background-repeat: no-repeat;
-      background-position: top;
-      background-size: cover;
     }
     footer{
       background-image: url(../../images/bottombar.png);
@@ -132,4 +114,27 @@
       background-size:375px;
     }
   }
+}
+.contain{
+  position: relative;
+  overflow-y: scroll;
+}
+.device-main{
+  vertical-align: top;
+}
+.body{
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.items{
+  position: absolute;
+}
+.items:hover{
+  border:1px dotted #FFF;
+}
+form{
+  position: fixed;
+  right: 0;
 }
