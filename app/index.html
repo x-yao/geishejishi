@@ -9,11 +9,6 @@
 </head>
 <body>
 <script type="text/x-template" id="device-template">
-	<style>
-		.body{
-			background-image:url("{{}}")
-		}
-	</style>
 	<div class="{{env}} device-main" data-screen-height="{{deviceHeight}}">
         <div class="container" data-image="">
             <header></header>
@@ -57,6 +52,11 @@
 
 
 <div id="app">
+	<style>
+		.body{
+			background-image:url("{{containData.bacUrl}}")
+		}
+	</style>
 	<section id="form">
 		<form>
 		    <input type="file" name="uploadBacFile" class="uploader" />
@@ -68,7 +68,7 @@
 	<section id="mian-list">
 		<devices-list v-for="item in allDevices"
 		:data="item"
-		:containData="containData"></devices-list>
+		:odata="containData"></devices-list>
 	</section>
 </div>
 <script src="/bower_components/vue/dist/vue.js"></script>

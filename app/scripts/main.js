@@ -2,14 +2,14 @@ Vue.component('device', {
 	template: '#device-template',
 	props: {
 		data: Object,
-		containData:Object
+		containdata:Object
 	},
 	data: function() {
 		return {
 			env: this.data.env,
 			deviceHeight: this.data.height,
 			needFooter: this.data.footer,
-			bacUrl:this.containData.bacUrl
+			bacUrl:this.containdata.bacUrl
 		}
 	},
 	methods: {
@@ -20,7 +20,7 @@ Vue.component('devices-list', {
 	template: '#device-parent-template',
 	props: {
 		data: Object,
-		containData:Object
+		odata:Object
 	},
 	data: function() {
 		return {
@@ -28,7 +28,7 @@ Vue.component('devices-list', {
 			deviceEnv: this.data.deviceEnv,
 			deviceWidth: this.data.width,
 			dpclass: this.data.dpclass,
-			containData:this.containData
+			containData:this.odata
 		}
 	},
 	methods: {
@@ -139,8 +139,8 @@ var app = new Vue({
 				btnClasses:"btn btn-default"
 			}
 		],
-		containData:{
-			bacUrl:"",
+		containData: {
+			bacUrl:"1",
 			bacPos:"",
 			pageMinHeight:"",
 			items:[
