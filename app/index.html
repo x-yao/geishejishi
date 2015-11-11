@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/vue/main.css">
+</head>
+<body>
+<script type="text/x-template" id="device-template">
+	<style>
+		.body{
+			background-image:url("{{}}")
+		}
+	</style>
+	<div class="{{env}} device-main" data-screen-height="{{deviceHeight}}">
+        <div class="container" data-image="">
+            <header></header>
+            <div class="contain">
+                <div class="body"></div>
+            </div>
+            <template v-if="needFooter">
+			  <footer></footer>
+			</template>
+        </div>
+        <div class="controller">
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id="device-parent-template">
+	<div class="device {{dpclass}}" data-screen="{{deviceWidth}}">
+		<header>{{deviceTitle}}设备 </header>
+		<device v-for="item1 in deviceEnv"
+		:data="item1"
+		:containData="containData"><device>
+	</div>
+</script>
+
+<script type="text/x-template" id="form-template">
+	<template v-if="type == 'input'">
+		<div class="c-input">
+			<label for="{{id}}">{{title}}</label>
+			<input type="text" id="{{id}}" placeholder="{{placeholder}}" class="{{classes}}">
+			<div id="{{id}}Btn" class="{{btnClasses}}" v-if="needBtn">确认</div>
+		</div>
+	</template>
+	<template v-if="type == 'select'">
+		<div class="c-select">
+			<label for="{{id}}">{{title}}</label>
+		    <select name="{{name}}" id="{{id}}" class="{{classes}}">
+		        <option value="{{item.value}}" v-for="item in data.options">{{item.title}}</option>
+		    </select>
+		</div>
+	</template>
+</script>
+
+
+<div id="app">
+	<section id="form">
+		<form>
+		    <input type="file" name="uploadBacFile" class="uploader" />
+		    <input type="file" name="uploadItmFile" class="uploader" />
+		    <my-forms v-for="item in formData"
+		    :data="item"></my-forms>
+		</form>
+	</section>
+	<section id="mian-list">
+		<devices-list v-for="item in allDevices"
+		:data="item"
+		:containData="containData"></devices-list>
+	</section>
+</div>
+<script src="/bower_components/vue/dist/vue.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
