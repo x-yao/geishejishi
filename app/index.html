@@ -42,7 +42,7 @@
 	<template v-if="type == 'input'">
 		<div class="c-input">
 			<label for="{{id}}">{{title}}</label>
-			<input type="text" id="{{id}}" placeholder="{{placeholder}}" class="{{classes}}" 
+			<input type="text" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}" class="{{classes}}" 
 			v-model="value">
 			<div id="{{id}}Btn" class="{{btnClasses}}" v-if="needBtn"
 			v-on:click="updateChangeBtn">确认</div>
@@ -56,6 +56,17 @@
 		    v-on:change="updateChange">
 		        <option v-bind:value="item.value" v-for="item in data.options">{{item.title}}</option>
 		    </select>
+		</div>
+	</template>
+	<template v-if="type == 'item-select'">
+		<div class="i-select">
+			<label for="{{id}}">{{title}}</label>
+		    <select name="{{name}}" id="{{id}}" class="{{classes}}" 
+		    v-model="value"
+		    v-on:change="updateChange">
+		        <option v-bind:value="item.value" v-for="item in data.options">{{item.title}}</option>
+		    </select>
+		    <div v-on:click="delItem">删除</div>
 		</div>
 	</template>
 </script>
@@ -78,6 +89,9 @@
 		    v-on:change="updateImg"/>
 		    <my-forms v-for="item in formData"
 		    :data="item"></my-forms>
+		    <my-forms v-for="(index,item) in formItemData"
+		    :data="item"
+		    :cindex="index"></my-forms>
 		</form>
 	</section>
 	<section id="mian-list">

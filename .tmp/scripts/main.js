@@ -56,7 +56,8 @@ Vue.component('devices-list', {
 Vue.component('my-forms', {
 	template: '#form-template',
 	props: {
-		data: Object
+		data: Object,
+		cindex: Number
 	},
 	data: function data() {
 		var item = this.data;
@@ -69,15 +70,19 @@ Vue.component('my-forms', {
 			options: item.options || [],
 			placeholder: item.placeholder || "",
 			needBtn: item.needBtn,
-			value: item.dfvalue || ""
+			value: item.dfvalue || "",
+			index: this.cindex
 		};
 	},
 	methods: {
 		updateChange: function updateChange(e) {
-			this.$dispatch("update-" + this.id, this.value);
+			this.$dispatch("update-" + this.name, this.value);
 		},
 		updateChangeBtn: function updateChangeBtn() {
-			this.$dispatch("update-btn-" + this.id, this.value);
+			this.$dispatch("update-btn-" + this.name, this.value);
+		},
+		delItem: function delItem() {
+			this.$dispatch("del-btn-" + this.name, this.id, this.cindex);
 		}
 	}
 });
@@ -85,6 +90,7 @@ Vue.component('my-forms', {
 var app = new Vue({
 	el: '#app',
 	data: {
+		customWidth: 375,
 		allDevices: [{
 			title: 'iPhone 4',
 			dpclass: 'ip4',
@@ -125,11 +131,12 @@ var app = new Vue({
 				footer: true
 			}]
 		}],
+		formItemData: [],
 		formData: [{
 			type: "select",
 			id: "poselect",
 			classes: "form-control",
-			name: "position",
+			name: "poselect",
 			title: "背景图片分布",
 			dfvalue: "top",
 			options: [{
@@ -148,6 +155,7 @@ var app = new Vue({
 		}, {
 			type: "input",
 			id: "minHeight",
+			name: "minHeight",
 			classes: "form-control",
 			title: "最小高度",
 			placeholder: "请输入最小高度请默认px",
@@ -175,6 +183,10 @@ var app = new Vue({
 		},
 		"update-btn-minHeight": function updateBtnMinHeight(data) {
 			this.containData.pageMinHeight = data;
+		},
+		"del-btn-imgItem": function delBtnImgItem(data, index) {
+			this.containData.items.splice(index, 1);
+			this.formItemData.splice(index, 1);
 		}
 	},
 	methods: {
@@ -192,6 +204,21 @@ var app = new Vue({
 					if (target == "uploadBacFile") {
 						self.containData.bacUrl = e1.target.result;
 					} else {
+						self.formItemData.push({
+							type: "item-select",
+							id: "imgItem" + (self.containData.items.length + 1),
+							classes: "form-control",
+							name: "imgItem",
+							title: f.name,
+							dfvalue: "top",
+							options: [{
+								value: "top",
+								title: "上"
+							}, {
+								value: "bottom",
+								title: "下"
+							}]
+						});
 						self.containData.items.push({
 							id: "item" + (self.containData.items.length + 1),
 							url: e1.target.result
