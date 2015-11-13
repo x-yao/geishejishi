@@ -11,7 +11,26 @@ Vue.component('device', {
 			env: this.data.env,
 			deviceHeight: this.data.height,
 			needFooter: this.data.footer,
-			bacUrl: this.containdata.bacUrl
+			bacUrl: this.containdata.bacUrl,
+			itemList: this.containdata.items
+		};
+	},
+	methods: {}
+});
+Vue.component('item-image', {
+	template: '#item-image-template',
+	props: {
+		data: Object
+	},
+	data: function data() {
+		return {
+			id: this.data.id,
+			url: this.data.url,
+			style: {
+				width: this.data.width || "",
+				left: this.data.x || "",
+				top: this.data.y || ""
+			}
 		};
 	},
 	methods: {}
@@ -49,10 +68,18 @@ Vue.component('my-forms', {
 			classes: item.classes,
 			options: item.options || [],
 			placeholder: item.placeholder || "",
-			needBtn: item.needBtn
+			needBtn: item.needBtn,
+			value: item.dfvalue || ""
 		};
 	},
-	methods: {}
+	methods: {
+		updateChange: function updateChange(e) {
+			this.$dispatch("update-" + this.id, this.value);
+		},
+		updateChangeBtn: function updateChangeBtn() {
+			this.$dispatch("update-btn-" + this.id, this.value);
+		}
+	}
 });
 
 var app = new Vue({
@@ -104,6 +131,7 @@ var app = new Vue({
 			classes: "form-control",
 			name: "position",
 			title: "背景图片分布",
+			dfvalue: "top",
 			options: [{
 				value: "top",
 				title: "上"
@@ -124,13 +152,53 @@ var app = new Vue({
 			title: "最小高度",
 			placeholder: "请输入最小高度请默认px",
 			needBtn: true,
-			btnClasses: "btn btn-default"
+			btnClasses: "btn btn-default",
+			dfvalue: ""
 		}],
 		containData: {
-			bacUrl: "1",
+			bacUrl: "",
 			bacPos: "",
 			pageMinHeight: "",
-			items: []
+			items: [
+				// {
+				// 	id:"",
+				// 	url:"",
+				// 	posx:"",
+				// 	posY:""
+				// }
+			]
+		}
+	},
+	events: {
+		"update-poselect": function updatePoselect(data) {
+			this.containData.bacPos = data;
+		},
+		"update-btn-minHeight": function updateBtnMinHeight(data) {
+			this.containData.pageMinHeight = data;
+		}
+	},
+	methods: {
+		updateImg: function updateImg(e) {
+			var self = this;
+			var f = e.target.files[0];
+			if (!f.type.match('image.*')) {
+				return false;
+			};
+			var target = e.target.name;
+			var reader = new FileReader();
+			reader.readAsDataURL(f);
+			reader.onload = (function (theFile) {
+				return function (e1) {
+					if (target == "uploadBacFile") {
+						self.containData.bacUrl = e1.target.result;
+					} else {
+						self.containData.items.push({
+							id: "item" + (self.containData.items.length + 1),
+							url: e1.target.result
+						});
+					};
+				};
+			})(f, target);
 		}
 	}
 });

@@ -13,7 +13,10 @@
         <div class="container" data-image="">
             <header></header>
             <div class="contain">
-                <div class="body"></div>
+                <div class="body">
+                	<item-image v-for="item in itemList"
+                	:data="item"></item-image>
+                </div>
             </div>
             <template v-if="needFooter">
 			  <footer></footer>
@@ -31,20 +34,27 @@
 		:containData="containData"><device>
 	</div>
 </script>
-
+<script type="text/x-template" id="item-image-template">
+	<img v-bind:src="url"
+	v-bind:style="style">
+</script>
 <script type="text/x-template" id="form-template">
 	<template v-if="type == 'input'">
 		<div class="c-input">
 			<label for="{{id}}">{{title}}</label>
-			<input type="text" id="{{id}}" placeholder="{{placeholder}}" class="{{classes}}">
-			<div id="{{id}}Btn" class="{{btnClasses}}" v-if="needBtn">确认</div>
+			<input type="text" id="{{id}}" placeholder="{{placeholder}}" class="{{classes}}" 
+			v-model="value">
+			<div id="{{id}}Btn" class="{{btnClasses}}" v-if="needBtn"
+			v-on:click="updateChangeBtn">确认</div>
 		</div>
 	</template>
 	<template v-if="type == 'select'">
 		<div class="c-select">
 			<label for="{{id}}">{{title}}</label>
-		    <select name="{{name}}" id="{{id}}" class="{{classes}}">
-		        <option value="{{item.value}}" v-for="item in data.options">{{item.title}}</option>
+		    <select name="{{name}}" id="{{id}}" class="{{classes}}" 
+		    v-model="value"
+		    v-on:change="updateChange">
+		        <option v-bind:value="item.value" v-for="item in data.options">{{item.title}}</option>
 		    </select>
 		</div>
 	</template>
@@ -54,13 +64,18 @@
 <div id="app">
 	<style>
 		.body{
-			background-image:url("{{containData.bacUrl}}")
+			background-image:url("{{containData.bacUrl}}");
+			background-size:{{containData.bacPos=="ya" ? "100% 100%" : "100%";}};
+			background-position:{{containData.bacPos}};
+			min-height:{{containData.pageMinHeight+"px"}};
 		}
 	</style>
 	<section id="form">
 		<form>
-		    <input type="file" name="uploadBacFile" class="uploader" />
-		    <input type="file" name="uploadItmFile" class="uploader" />
+		    <input type="file" name="uploadBacFile" class="uploader" 
+		    v-on:change="updateImg"/>
+		    <input type="file" name="uploadItmFile" class="uploader" 
+		    v-on:change="updateImg"/>
 		    <my-forms v-for="item in formData"
 		    :data="item"></my-forms>
 		</form>
